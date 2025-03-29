@@ -1,0 +1,169 @@
+openapi: 3.1.0
+info:
+  title: API go-fiber-template backend service
+  version: "1.0"
+servers:
+  - url: /api/user
+  - url: /api/ip
+paths:
+  /users:
+    get:
+      tags:
+        - user
+      description: Get user all
+      # security:
+      #   - bearerAuth: []
+      summary: Get user all
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              example:
+              message: success
+              data:
+                - user_id: CEYBZQQ
+                  username: tset12
+                  email: "12"
+  /get_user:
+    get:
+      tags:
+        - user
+      security:
+        - bearerAuth: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: user_id
+          in: query
+          schema:
+            type: string
+          required: true
+          description: user_id for find
+          value: CWEDS
+      summary: Get user by id
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              example:
+                message: success
+                data:
+                  user_id: CEYBZQQ
+                  username: tset12
+                  email: "12"
+  /update_user:
+    put:
+      tags:
+        - user
+      description: Update user
+      summary: Update user
+      parameters:
+        - in: query
+          name: user_id
+          schema:
+            type: string
+          value: CWEDS
+          required: true
+          description: user_id for update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            examples:
+              example_1:
+                value:
+                  username: tset12
+                  email: "12"
+              example_2:
+                value:
+                  username: tset13
+                  email: "12"
+
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              example:
+                message: updated successfully
+
+  /delete_user/{user_id}:
+    delete:
+      tags:
+        - user
+      description: Delete user
+      summary: Delete user
+      parameters:
+        - in: query
+          name: user_id
+          schema:
+            type: string
+          value: CWEDS
+          required: true
+          description: The sales code name.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              example:
+                message: deleted successfully
+  /add_user:
+    post:
+      tags:
+        - user
+      description: Add user
+      summary: Add user
+      requestBody:
+        required: true
+        description: Add user
+        content:
+          application/json:
+            example:
+              username: tset12
+              email: "12"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              example:
+                message: "created successfully"
+
+  /check_ip:
+    get:
+      tags:
+        - ip
+      servers:
+        - url: /api/ip
+      description: Get ip
+      # security:
+      #   - bearerAuth: []
+      summary: Get ip
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              example:
+                message: success
+                data: 39.228.50.232
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT Authorization header using the Bearer scheme.
+      in: header
+      name: Authorization
+
+tags:
+  - name: user
+    description: User All endpoint
+  - name: ip

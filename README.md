@@ -1,0 +1,34 @@
+# golang_stripe
+
+## .env Example
+
+PORT=6060
+
+JWT_SECRET_KEY=Test
+
+JWT_REFESH_SECRET_KEY=Test
+
+VITE_SUPABASE_KEY=SUPABASE_KEY
+
+VITE_SUPABASE_URL=SUPABASE_URL
+
+# AWS S3 -> https://console.aws.amazon.com/s3
+AWS_BUCKET_NAME=test
+
+AWS_REGION=ap-southeast-1
+
+AWS_ACCESS_KEY_ID=Test
+
+AWS_SECRET_ACCESS_KEY=Test
+
+STRIPE_REDIRECT=COMPLETE_URL_REDIRECT
+
+FRONT_REDIRECT_URL_STRIPE=YOUR_REDIRECT_URL
+# Redis URL -> https://app.redislabs.com/
+
+REDIS_URI=redis://localhost:6379
+
+REDISREAD_URI=redis://localhost:6379
+
+STRIPE_KEY=Your_STRIPE_KEY
+STRIPE_WEBHOOK_SECRET=YourKey
